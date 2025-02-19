@@ -1,0 +1,28 @@
+{
+  "contact": {
+    "firstName": "Izuku",
+    "lastName": "Midoriya",
+    "middleName": "Deku",
+    "email": "deku@class1a.com",
+    "mobilePhone": "123-456-7891",
+    "homePhone": "123-456-7890"
+  },
+  "addresses": [{
+    "inCareOfName": "Deku",
+    "streetAddress": "123 Mulberry St",
+    "aptNumber": "435",
+    "city": "ketsu",
+    "state": "UT",
+    "postalCode": "12345",
+    "country": "US",
+    "addressType": "mailing"
+    },{
+    "streetAddress": "456 Elm St",
+    "aptNumber": "006",
+    "city": "diama",
+    "state": "AZ",
+    "postalCode": "98765",
+    "country": "US",
+    "addressType": "physical"
+  }]
+}
