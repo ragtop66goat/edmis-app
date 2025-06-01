@@ -1,6 +1,8 @@
 package com.ragtopmedia.school.entities;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "address")
@@ -25,8 +27,11 @@ public class Address {
     private String country;
     @Column(name = "address_type")
     private String addressType;
-    @Column(name = "school_account_id")
-    private Long schoolAccountId;
+    @ManyToOne
+    @JoinColumn(name = "school_account_id", nullable = false)
+
+    @JsonIgnore
+    SchoolAccount schoolAccount;
 
     public Long getId() {
         return id;
@@ -101,11 +106,11 @@ public class Address {
     }
 
     public Long getSchoolAccountId() {
-        return schoolAccountId;
+        return schoolAccount.getId();
     }
 
-    public void setSchoolAccountId(Long schoolAccountId) {
-        this.schoolAccountId = schoolAccountId;
+    public void setSchoolAccount(SchoolAccount schoolAccount) {
+        this.schoolAccount = schoolAccount;
     }
 
     @Override
@@ -119,7 +124,6 @@ public class Address {
                 ", postalCode='" + postalCode + '\'' +
                 ", country='" + country + '\'' +
                 ", addressType='" + addressType + '\'' +
-                ", schoolAccountId=" + schoolAccountId +
                 '}';
     }
 }

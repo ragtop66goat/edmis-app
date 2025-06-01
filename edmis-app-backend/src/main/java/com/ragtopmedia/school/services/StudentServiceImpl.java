@@ -18,9 +18,9 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService{
 
     private final Logger log = LoggerFactory.getLogger(StudentServiceImpl.class);
-    private AddressRepository addressRepository;
-    private ContactRepository contactRepository;
-    private SchoolAccountRepository schoolAccountRepository;
+    private final AddressRepository addressRepository;
+    private final ContactRepository contactRepository;
+    private final SchoolAccountRepository schoolAccountRepository;
 
     public StudentServiceImpl(AddressRepository addressRepository, ContactRepository contactRepository, SchoolAccountRepository schoolAccountRepository){
         this.addressRepository = addressRepository;
@@ -39,19 +39,16 @@ public class StudentServiceImpl implements StudentService{
         log.info("Creating account with contact: {}", schoolAccount.getContact());
         log.info("Creating account with address: {}", schoolAccount.getAddresses());
 
-        SchoolAccount newSchoolAccount = new SchoolAccount.Builder()
-                .roleId(1)
-                .build();
-        schoolAccountRepository.save(newSchoolAccount);
+        SchoolAccount sa = new SchoolAccount(1);
+        schoolAccountRepository.save(sa);
 
-        List<Address> addresses = schoolAccount.getAddresses();
-        for(Address address : addresses){
-            address.setSchoolAccountId(newSchoolAccount.getId());
+        for(Address address : schoolAccount.getAddresses()){
+            address.setSchoolAccount(sa);
             addressRepository.save(address);
         }
 
-        Contact contact = contactRepository.save(schoolAccount.getContact());
-        contact.setSchoolAccountId(newSchoolAccount.getId());
+        Contact contact = schoolAccount.getContact();
+        contact.setSchoolAccount(sa);
         contactRepository.save(contact);
 
         return schoolAccount;
