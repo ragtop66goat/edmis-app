@@ -1,8 +1,8 @@
 package com.ragtopmedia.school.entities;
 
-import com.ragtopmedia.school.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "contact_info")
@@ -23,8 +23,10 @@ public class Contact {
     private String mobilePhone;
     @Column(name = "home_phone")
     private String homePhone;
-    @Column(name = "school_account_id")
-    private Long schoolAccountId;
+    @ManyToOne
+    @JoinColumn(name = "school_account_id", nullable = false)
+    @JsonIgnore
+    SchoolAccount schoolAccount;
 
     public Long getId() {
 
@@ -97,11 +99,11 @@ public class Contact {
     }
 
     public Long getSchoolAccountId() {
-        return schoolAccountId;
+        return schoolAccount.getId();
     }
 
-    public void setSchoolAccountId(Long schoolAccountId){
-        this.schoolAccountId = schoolAccountId;
+    public void setSchoolAccount(SchoolAccount schoolAccount){
+        this.schoolAccount = schoolAccount;
     }
 
     @Override
@@ -113,7 +115,6 @@ public class Contact {
                 ", email='" + email + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", homePhone='" + homePhone + '\'' +
-                ", schoolAccountId=" + schoolAccountId +
                 '}';
     }
 }

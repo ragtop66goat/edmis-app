@@ -1,7 +1,6 @@
 package com.ragtopmedia.school.controllers;
 
 import com.ragtopmedia.school.entities.Contact;
-import com.ragtopmedia.school.entities.Teacher;
 import com.ragtopmedia.school.services.TeacherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

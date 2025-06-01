@@ -1,8 +1,6 @@
 package com.ragtopmedia.school.entities;
 
-import com.ragtopmedia.school.enums.Role;
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class SchoolAccount {
@@ -15,8 +13,8 @@ public class SchoolAccount {
 
     public SchoolAccount(){};
 
-    private SchoolAccount(Builder builder){
-        this.roleId = builder. roleId;
+    public SchoolAccount(int roleId){
+        this.roleId = roleId;
     }
 
     public int getRole() {
@@ -29,18 +27,5 @@ public class SchoolAccount {
 
     public Long getId() {
         return id;
-    }
-
-    public static class Builder{
-        private int roleId;
-
-        public Builder roleId(int roleId){
-            this.roleId = roleId;
-            return this;
-        }
-
-        public SchoolAccount build(){
-            return new SchoolAccount(this);
-        }
     }
 }

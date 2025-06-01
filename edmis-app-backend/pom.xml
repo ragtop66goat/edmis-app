@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.2</version>
+		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.kriscfoster</groupId>
-	<artifactId>school</artifactId>
+	<groupId>com.ragtopmediar</groupId>
+	<artifactId>EDMIS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>school</name>
-	<description>Demo project for Spring Boot</description>
+	<name>EDMIS</name>
+	<description>EducationDataManagementInformationSystem</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,6 +34,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<version>2.5.0</version>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 		</dependency>
 	</dependencies>
 

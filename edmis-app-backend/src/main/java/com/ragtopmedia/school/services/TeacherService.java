@@ -1,8 +1,6 @@
 package com.ragtopmedia.school.services;
 
 import com.ragtopmedia.school.entities.Contact;
-import com.ragtopmedia.school.entities.Teacher;
-
 import java.util.List;
 
 public interface TeacherService {

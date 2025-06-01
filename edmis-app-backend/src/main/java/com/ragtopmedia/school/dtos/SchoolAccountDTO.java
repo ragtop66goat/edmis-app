@@ -9,7 +9,13 @@ public class SchoolAccountDTO {
     private Contact contact;
     private List<Address> addresses;
 
-    public SchoolAccountDTO(){};
+    public void setContact(Contact contact){
+        this.contact = contact;
+    }
+
+    public void setAddresses(List<Address> addresses){
+        this.addresses = addresses;
+    }
 
     public Contact getContact(){
         return contact;
