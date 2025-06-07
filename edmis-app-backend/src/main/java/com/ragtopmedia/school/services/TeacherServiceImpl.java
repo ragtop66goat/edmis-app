@@ -1,9 +1,14 @@
 package com.ragtopmedia.school.services;
 
+import com.ragtopmedia.school.dtos.SchoolAccountDTO;
+import com.ragtopmedia.school.entities.Address;
 import com.ragtopmedia.school.entities.Contact;
+import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.entities.Subject;
 import com.ragtopmedia.school.repositories.SubjectRepository;
+import com.ragtopmedia.school.repositories.AddressRepository;
 import com.ragtopmedia.school.repositories.ContactRepository;
+import com.ragtopmedia.school.repositories.SchoolAccountRepository;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +20,17 @@ import java.util.NoSuchElementException;
 @Service
 public class TeacherServiceImpl implements TeacherService{
 
-    private static final Logger logger = LoggerFactory.getLogger(TeacherServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(TeacherServiceImpl.class);
     private final ContactRepository contactRepository;
     private final SubjectRepository subjectRepository;
+    private final SchoolAccountRepository schoolAccountRepository;
+    private final AddressRepository addressRepository;
 
-    TeacherServiceImpl(ContactRepository teacherRepository, SubjectRepository subjectRepository){
+    TeacherServiceImpl(ContactRepository teacherRepository, SubjectRepository subjectRepository, SchoolAccountRepository schoolAccountRepository, AddressRepository addressRepository){
         this.contactRepository = teacherRepository;
         this.subjectRepository = subjectRepository;
+        this.schoolAccountRepository = schoolAccountRepository;
+        this.addressRepository = addressRepository;
     }
 
     @Override
@@ -30,8 +39,29 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public Contact createTeacher(Contact teacher) {
-        return contactRepository.save(teacher);
+    @Transactional
+    public SchoolAccountDTO createTeacher(SchoolAccountDTO schoolAccount){
+
+        if(schoolAccount.getAddresses() == null || schoolAccount.getContact() == null){
+            throw new IllegalArgumentException("Address and Contact must not be null");
+        }
+
+        log.info("Creating account with contact: {}", schoolAccount.getContact());
+        log.info("Creating accoutn with address: {}", schoolAccount.getAddresses());
+
+        SchoolAccount sa = new SchoolAccount(2);
+        schoolAccountRepository.save(sa);
+
+        for(Address address : schoolAccount.getAddresses()){
+            address.setSchoolAccount(sa);
+            addressRepository.save(address);
+        }
+
+        Contact contact = schoolAccount.getContact();
+        contact.setSchoolAccount(sa);
+        contactRepository.save(contact);
+
+        return schoolAccount;
     }
 
     @Override
@@ -39,7 +69,7 @@ public class TeacherServiceImpl implements TeacherService{
     public Contact assignSubjectToTeacher(Long teacherId, Long subjectId) {
 
         if(teacherId == null || subjectId == null){
-            logger.info("teacherId: {}, subjectId: {}", teacherId, subjectId);
+            log.info("teacherId: {}, subjectId: {}", teacherId, subjectId);
             throw new IllegalArgumentException("Teacher id and Subject id can not be null");
         }
         Contact teacher = contactRepository.findById(teacherId)

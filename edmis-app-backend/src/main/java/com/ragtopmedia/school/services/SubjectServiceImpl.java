@@ -17,7 +17,7 @@ public class SubjectServiceImpl implements SubjectService{
 
     private final SubjectRepository subjectRepository;
     private final ContactRepository contactRepository;
-    private static final Logger logger = LoggerFactory.getLogger(SubjectServiceImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(SubjectServiceImpl.class);
 
 
     public SubjectServiceImpl(SubjectRepository subjectRepository, ContactRepository contactRepository){
@@ -29,7 +29,7 @@ public class SubjectServiceImpl implements SubjectService{
     public Subject enrollStudent(Long subjectId, Long studentId) {
 
         if(subjectId == null || studentId == null){
-            logger.info("subjectId: {}, studentId: {}", subjectId, studentId);
+            log.info("subjectId: {}, studentId: {}", subjectId, studentId);
             throw new IllegalArgumentException("Subject id and Student id can not be null");
         }
         Contact student = contactRepository.findById(studentId)

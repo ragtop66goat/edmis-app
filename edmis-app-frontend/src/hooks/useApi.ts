@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 interface IApiRequest {
   url: string;
