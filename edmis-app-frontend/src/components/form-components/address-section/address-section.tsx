@@ -4,7 +4,7 @@ import {
   Label,
   TextInput,
 } from "@trussworks/react-uswds";
-import StateSelector from "./state-selector";
+import StateSelector from "../state-selector/state-selector";
 
 const AddressSection = () => {
   return (

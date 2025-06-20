@@ -66,24 +66,24 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     @Transactional
-    public Contact assignSubjectToTeacher(Long teacherId, Long subjectId) {
+    public SchoolAccount assignSubjectToTeacher(Long teacherId, Long subjectId) {
 
         if(teacherId == null || subjectId == null){
             log.info("teacherId: {}, subjectId: {}", teacherId, subjectId);
             throw new IllegalArgumentException("Teacher id and Subject id can not be null");
         }
-        Contact teacher = contactRepository.findById(teacherId)
+        SchoolAccount teacher = schoolAccountRepository.findById(teacherId)
                 .orElseThrow(() -> new NoSuchElementException("No teacher found with id: " + teacherId));
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(() -> new NoSuchElementException("No subject found with id: " + subjectId));
 
-//        teacher.assignSubject(subject);
-//        subject.assignTeacher(teacher);
+       teacher.getSubjectsTaught().add(subject);
+       subject.assignTeacher(teacher);
 
-        subjectRepository.save(subject);
+       schoolAccountRepository.save(teacher);
+       subjectRepository.save(subject);
 
-        return contactRepository.save(teacher);
-
+        return teacher;
 
     }
 }

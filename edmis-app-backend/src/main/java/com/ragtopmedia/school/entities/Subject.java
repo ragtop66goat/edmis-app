@@ -19,9 +19,8 @@ public class Subject {
     )
     private Set<Contact> enrolledStudents = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="teacher_id", referencedColumnName = "id")
-    private SchoolAccount teacher;
+    @ManyToMany(mappedBy = "subjectsTaught")
+    Set<SchoolAccount> teachers = new HashSet<>();
 
     private String name;
 
@@ -44,12 +43,12 @@ public class Subject {
         enrolledStudents.add(student);
     }
 
-    public SchoolAccount getTeacher(){
-        return this.teacher;
+    public Set<SchoolAccount> getTeachers(){
+        return this.teachers;
     }
 
     public void assignTeacher(SchoolAccount teacher){
-        this.teacher = teacher;
+        this.teachers.add(teacher);
     }
 
 }

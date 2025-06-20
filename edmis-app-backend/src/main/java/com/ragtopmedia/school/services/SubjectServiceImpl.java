@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 @Service
 public class SubjectServiceImpl implements SubjectService{
@@ -44,14 +45,14 @@ public class SubjectServiceImpl implements SubjectService{
     }
 
     @Override
-    public SchoolAccount getTeacherForSubject(Long subjectId) {
+    public Set<SchoolAccount> getTeacherForSubject(Long subjectId) {
         if(subjectId == null){
             throw new IllegalArgumentException("Subject id can not be null");
         }
         Subject subject = subjectRepository.findById(subjectId)
                 .orElseThrow(()-> new NoSuchElementException("No subject found with id: " + subjectId));
 
-        return subject.getTeacher();
+        return subject.getTeachers();
     }
 
     public List<Subject> getSubjects(){

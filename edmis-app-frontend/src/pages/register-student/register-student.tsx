@@ -1,7 +1,7 @@
 import { Form } from "@trussworks/react-uswds";
-import AddressSection from "../../components/form-components/address-section";
-import ContactSection from "../../components/form-components/contact-section";
-import StandardButtonConfig from "../../components/form-components/standard-button-config";
+import AddressSection from "../../components/form-components/address-section/address-section";
+import ContactSection from "../../components/form-components/contact-section/contact-section";
+import StandardButtonConfig from "../../components/form-components/button-configs/standard-button-config";
 import { Address, Contact, RegistrationPayload } from "../../utils/types";
 
 export const RegisterStudent = () => {
