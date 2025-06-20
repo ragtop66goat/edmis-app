@@ -2,6 +2,7 @@ package com.ragtopmedia.school.controllers;
 
 import com.ragtopmedia.school.dtos.SchoolAccountDTO;
 import com.ragtopmedia.school.entities.Contact;
+import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.services.TeacherServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -84,7 +85,7 @@ public class TeacherController {
     }
 
     @PostMapping("/{teacherId}/subjects/{subjectId}")
-    Contact assignSubjectToTeacher(@PathVariable Long teacherId, @PathVariable Long subjectId) {
+    SchoolAccount assignSubjectToTeacher(@PathVariable Long teacherId, @PathVariable Long subjectId) {
 
         return teacherServiceImpl.assignSubjectToTeacher(teacherId, subjectId);
     }
