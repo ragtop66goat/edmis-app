@@ -23,7 +23,7 @@ public class Contact {
     private String mobilePhone;
     @Column(name = "home_phone")
     private String homePhone;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "school_account_id", nullable = false)
     @JsonIgnore
     SchoolAccount schoolAccount;

@@ -79,13 +79,13 @@ public class TeacherController {
             )
         }
     )
-    SchoolAccountDTO createTeacher(@org.springframework.web.bind.annotation.RequestBody SchoolAccountDTO schoolAccount) {
+    SchoolAccountDTO createTeacher(@org.springframework.web.bind.annotation.RequestBody SchoolAccount schoolAccount) {
 
         return teacherServiceImpl.createTeacher(schoolAccount);
     }
 
     @PostMapping("/{teacherId}/subjects/{subjectId}")
-    SchoolAccount assignSubjectToTeacher(@PathVariable Long teacherId, @PathVariable Long subjectId) {
+    SchoolAccountDTO assignSubjectToTeacher(@PathVariable Long teacherId, @PathVariable Long subjectId) {
 
         return teacherServiceImpl.assignSubjectToTeacher(teacherId, subjectId);
     }

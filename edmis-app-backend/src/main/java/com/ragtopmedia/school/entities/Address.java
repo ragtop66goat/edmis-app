@@ -29,7 +29,6 @@ public class Address {
     private String addressType;
     @ManyToOne
     @JoinColumn(name = "school_account_id", nullable = false)
-
     @JsonIgnore
     SchoolAccount schoolAccount;
 

@@ -40,7 +40,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     @Transactional
-    public SchoolAccountDTO createTeacher(SchoolAccountDTO schoolAccount){
+    public SchoolAccountDTO createTeacher(SchoolAccount schoolAccount){
 
         if(schoolAccount.getAddresses() == null || schoolAccount.getContact() == null){
             throw new IllegalArgumentException("Address and Contact must not be null");
@@ -61,12 +61,12 @@ public class TeacherServiceImpl implements TeacherService{
         contact.setSchoolAccount(sa);
         contactRepository.save(contact);
 
-        return schoolAccount;
+        return SchoolAccountDTO.from(contact, schoolAccount.getAddresses());
     }
 
     @Override
     @Transactional
-    public SchoolAccount assignSubjectToTeacher(Long teacherId, Long subjectId) {
+    public SchoolAccountDTO assignSubjectToTeacher(Long teacherId, Long subjectId) {
 
         if(teacherId == null || subjectId == null){
             log.info("teacherId: {}, subjectId: {}", teacherId, subjectId);
@@ -83,7 +83,10 @@ public class TeacherServiceImpl implements TeacherService{
        schoolAccountRepository.save(teacher);
        subjectRepository.save(subject);
 
-        return teacher;
+       Contact contact = contactRepository.findBySchoolAccount_Id(teacherId);
+       List<Address> addresses = addressRepository.findAllBySchoolAccount_Id(teacherId);
+
+        return SchoolAccountDTO.from(contact, addresses);
 
     }
 }

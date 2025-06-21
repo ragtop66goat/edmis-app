@@ -1,8 +1,9 @@
 package com.ragtopmedia.school.dtos;
 
+import com.ragtopmedia.school.entities.Address;
+
 public class AddressDTO {
 
-    private long id;
     private String inCareOfName;
     private String streetAddress;
     private String aptNumber;
@@ -12,12 +13,16 @@ public class AddressDTO {
     private String country;
     private String addressType;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public static AddressDTO from(Address address){
+        AddressDTO dto = new AddressDTO();
+        dto.setInCareOfName(address.getInCareOfName());
+        dto.setStreetAddress(address.getStreetAddress());
+        dto.setAptNumber(address.getAptNumber());
+        dto.setCity(address.getCity());
+        dto.setState(address.getState());
+        dto.setCountry(address.getCountry());
+        dto.setAddressType(address.getAddressType());
+        return dto;
     }
 
     public String getInCareOfName() {

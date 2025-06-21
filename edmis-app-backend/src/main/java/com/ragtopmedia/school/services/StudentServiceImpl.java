@@ -1,5 +1,6 @@
 package com.ragtopmedia.school.services;
 
+import com.ragtopmedia.school.dtos.AddressDTO;
 import com.ragtopmedia.school.dtos.SchoolAccountDTO;
 import com.ragtopmedia.school.entities.Address;
 import com.ragtopmedia.school.entities.Contact;
@@ -28,7 +29,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     @Transactional
-    public SchoolAccountDTO createStudent(SchoolAccountDTO schoolAccount) {
+    public SchoolAccountDTO createStudent(SchoolAccount schoolAccount) {
 
         if(schoolAccount.getAddresses() == null || schoolAccount.getContact() == null){
             throw new IllegalArgumentException("Address and Contact must not be null");
@@ -49,6 +50,6 @@ public class StudentServiceImpl implements StudentService{
         contact.setSchoolAccount(sa);
         contactRepository.save(contact);
 
-        return schoolAccount;
+        return SchoolAccountDTO.from(contact, schoolAccount.getAddresses());
     }
 }

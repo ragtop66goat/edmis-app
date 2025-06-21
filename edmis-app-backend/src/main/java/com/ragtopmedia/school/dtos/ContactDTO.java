@@ -1,5 +1,7 @@
 package com.ragtopmedia.school.dtos;
 
+import com.ragtopmedia.school.entities.Contact;
+
 public class ContactDTO {
 
     private long id;
@@ -9,6 +11,17 @@ public class ContactDTO {
     private String email;
     private String mobilePhone;
     private String homePhone;
+
+    public static ContactDTO from(Contact contact){
+        ContactDTO dto = new ContactDTO();
+        dto.firstName = contact.getFirstName();
+        dto.lastName = contact.getLastName();
+        dto.middleName = contact.getMiddleName();
+        dto.email = contact.getEmail();
+        dto.mobilePhone = contact.getMobilePhone();
+        dto.homePhone = contact.getHomePhone();
+        return dto;
+    }
 
     public long getId() {
         return id;

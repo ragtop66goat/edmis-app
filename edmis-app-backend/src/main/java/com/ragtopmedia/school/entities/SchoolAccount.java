@@ -1,7 +1,10 @@
 package com.ragtopmedia.school.entities;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -21,6 +24,12 @@ public class SchoolAccount {
         inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
     private Set<Subject> subjectsTaught = new HashSet<>();
+
+    @OneToMany(mappedBy = "schoolAccount")
+    private List<Address> addresses;
+
+    @OneToOne(mappedBy = "schoolAccount")
+    private Contact contact;
 
     public SchoolAccount(){};
 
@@ -46,5 +55,13 @@ public class SchoolAccount {
 
     public void setSubjectsTaught(Set<Subject> subjectsTaught) {
         this.subjectsTaught = subjectsTaught;
+    }
+
+    public Contact getContact(){
+        return this.contact;
+    }
+
+    public List<Address> getAddresses(){
+        return this.addresses;
     }
 }

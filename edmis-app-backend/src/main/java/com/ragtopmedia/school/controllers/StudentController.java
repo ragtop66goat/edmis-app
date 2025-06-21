@@ -1,6 +1,7 @@
 package com.ragtopmedia.school.controllers;
 
 import com.ragtopmedia.school.dtos.SchoolAccountDTO;
+import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.services.StudentServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -69,7 +70,7 @@ public class StudentController {
             )
         }
     )
-    SchoolAccountDTO createStudent(@org.springframework.web.bind.annotation.RequestBody SchoolAccountDTO schoolAccount) {
+    SchoolAccountDTO createStudent(@org.springframework.web.bind.annotation.RequestBody SchoolAccount schoolAccount) {
 
         return studentServiceImpl.createStudent(schoolAccount);
     }

@@ -9,6 +9,6 @@ import java.util.List;
 public interface TeacherService {
 
     public List<Contact> getTeachers();
-    public SchoolAccountDTO createTeacher(SchoolAccountDTO schoolAccount);
-    public SchoolAccount assignSubjectToTeacher(Long teacherId, Long subjectId);
+    public SchoolAccountDTO createTeacher(SchoolAccount schoolAccount);
+    public SchoolAccountDTO assignSubjectToTeacher(Long teacherId, Long subjectId);
 }
