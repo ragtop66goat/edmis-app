@@ -5,6 +5,7 @@ import com.ragtopmedia.school.entities.Address;
 import com.ragtopmedia.school.entities.Contact;
 import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.entities.Subject;
+import com.ragtopmedia.school.enums.RoleEnum;
 import com.ragtopmedia.school.repositories.SubjectRepository;
 import com.ragtopmedia.school.repositories.AddressRepository;
 import com.ragtopmedia.school.repositories.ContactRepository;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -34,13 +36,19 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public List<Contact> getTeachers() {
-        return contactRepository.findAll();
+    public List<SchoolAccountDTO> getTeachers() {
+        List<SchoolAccountDTO> teachers = new ArrayList<>();
+        List<SchoolAccount> results = schoolAccountRepository.findAllByRoleId(RoleEnum.TEACHER_ROLE.getId());
+        for(SchoolAccount item : results){
+            teachers.add(SchoolAccountDTO.from(item.getContact(), item.getAddresses()));
+        }
+
+        return teachers;
     }
 
     @Override
     @Transactional
-    public SchoolAccountDTO createTeacher(SchoolAccountDTO schoolAccount){
+    public SchoolAccountDTO createTeacher(SchoolAccount schoolAccount){
 
         if(schoolAccount.getAddresses() == null || schoolAccount.getContact() == null){
             throw new IllegalArgumentException("Address and Contact must not be null");
@@ -61,12 +69,12 @@ public class TeacherServiceImpl implements TeacherService{
         contact.setSchoolAccount(sa);
         contactRepository.save(contact);
 
-        return schoolAccount;
+        return SchoolAccountDTO.from(contact, schoolAccount.getAddresses());
     }
 
     @Override
     @Transactional
-    public SchoolAccount assignSubjectToTeacher(Long teacherId, Long subjectId) {
+    public SchoolAccountDTO assignSubjectToTeacher(Long teacherId, Long subjectId) {
 
         if(teacherId == null || subjectId == null){
             log.info("teacherId: {}, subjectId: {}", teacherId, subjectId);
@@ -83,7 +91,10 @@ public class TeacherServiceImpl implements TeacherService{
        schoolAccountRepository.save(teacher);
        subjectRepository.save(subject);
 
-        return teacher;
+       Contact contact = contactRepository.findBySchoolAccount_Id(teacherId);
+       List<Address> addresses = addressRepository.findAllBySchoolAccount_Id(teacherId);
+
+        return SchoolAccountDTO.from(contact, addresses);
 
     }
 }

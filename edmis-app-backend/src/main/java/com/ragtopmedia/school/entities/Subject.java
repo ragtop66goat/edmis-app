@@ -22,21 +22,21 @@ public class Subject {
     @ManyToMany(mappedBy = "subjectsTaught")
     Set<SchoolAccount> teachers = new HashSet<>();
 
-    private String name;
+    private String title;
 
 
 // getters and setters
     public Set<Contact> getEnrolledStudents(){return this.enrolledStudents;}
     public Long getId() {
-        return id;
+        return this.id;
     }
 
-    public String getName() {
-        return name;
+    public String gettitle() {
+        return this.title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void settitle(String title) {
+        this.title = title;
     }
 
     public void enrollStudent(Contact student){

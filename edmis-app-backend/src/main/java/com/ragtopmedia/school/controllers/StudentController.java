@@ -1,17 +1,20 @@
 package com.ragtopmedia.school.controllers;
 
 import com.ragtopmedia.school.dtos.SchoolAccountDTO;
+import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.services.StudentServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.parameters.RequestBody; // for @Operation
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Students", description = "Endpoints for student management")
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -69,7 +72,7 @@ public class StudentController {
             )
         }
     )
-    SchoolAccountDTO createStudent(@org.springframework.web.bind.annotation.RequestBody SchoolAccountDTO schoolAccount) {
+    SchoolAccountDTO createStudent(@org.springframework.web.bind.annotation.RequestBody SchoolAccount schoolAccount) {
 
         return studentServiceImpl.createStudent(schoolAccount);
     }

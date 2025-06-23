@@ -2,11 +2,11 @@ package com.ragtopmedia.school.services;
 
 import java.util.Set;
 
-import com.ragtopmedia.school.entities.SchoolAccount;
-import com.ragtopmedia.school.entities.Subject;
+import com.ragtopmedia.school.dtos.SchoolAccountDTO;
+import com.ragtopmedia.school.dtos.SubjectDTO;
 
 public interface SubjectService {
 
-    public Subject enrollStudent(Long subjectId, Long studentId);
-    public Set<SchoolAccount> getTeacherForSubject(Long subjectId);
+    public SubjectDTO enrollStudent(Long subjectId, Long studentId);
+    public Set<SchoolAccountDTO> getTeacherForSubject(Long subjectId);
 }
