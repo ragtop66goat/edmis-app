@@ -1,14 +1,17 @@
 package com.ragtopmedia.school.controllers;
 
 import com.ragtopmedia.school.dtos.SchoolAccountDTO;
-import com.ragtopmedia.school.entities.Contact;
 import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.services.TeacherServiceImpl;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.parameters.RequestBody; // for @Operation
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "Teachers", description = "Endpoints for teacher management")
 @RestController
 @RequestMapping("/teachers")
 public class TeacherController {
@@ -24,7 +28,21 @@ public class TeacherController {
     TeacherServiceImpl teacherServiceImpl;
 
     @GetMapping
-    List<Contact> getTeachers() {
+    @Operation(
+    summary = "Get all teachers",
+    description = "Retrieves a list of all teachers, including their contact and address information."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "List of teachers retrieved successfully",
+            content = @Content(
+                mediaType = "application/json",
+                array = @ArraySchema(schema = @Schema(implementation = SchoolAccountDTO.class))
+            )
+        )
+    })
+    List<SchoolAccountDTO> getTeachers() {
 
         return teacherServiceImpl.getTeachers();
     }
@@ -85,6 +103,18 @@ public class TeacherController {
     }
 
     @PostMapping("/{teacherId}/subjects/{subjectId}")
+    @Operation(
+        summary = "Assign a subject to a teacher",
+        description = "Links an existing teacher (SchoolAccount) to a subject by ID and returns contact and address info."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Subject assigned to teacher successfully", 
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = SchoolAccountDTO.class))),
+        @ApiResponse(responseCode = "400", description = "Invalid teacherId or subjectId supplied", 
+            content = @Content),
+        @ApiResponse(responseCode = "404", description = "Teacher or Subject not found", 
+            content = @Content)
+    })
     SchoolAccountDTO assignSubjectToTeacher(@PathVariable Long teacherId, @PathVariable Long subjectId) {
 
         return teacherServiceImpl.assignSubjectToTeacher(teacherId, subjectId);

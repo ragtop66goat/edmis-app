@@ -2,14 +2,26 @@ package com.ragtopmedia.school.dtos;
 
 import com.ragtopmedia.school.entities.Contact;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class ContactDTO {
 
-    private long id;
+    @Schema(description = "First name", example = "Shoto")
     private String firstName;
+
+    @Schema(description = "Last name", example = "Aizawa")
     private String lastName;
+
+    @Schema(description = "Middle name or alias", example = "Eraser Head")
     private String middleName;
+
+    @Schema(description = "Email address", example = "saziawa@class1a.com")
     private String email;
+
+    @Schema(description = "Mobile phone number", example = "123-456-7891")
     private String mobilePhone;
+
+    @Schema(description = "Home phone number", example = "123-456-7890")
     private String homePhone;
 
     public static ContactDTO from(Contact contact){
@@ -21,14 +33,6 @@ public class ContactDTO {
         dto.mobilePhone = contact.getMobilePhone();
         dto.homePhone = contact.getHomePhone();
         return dto;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {

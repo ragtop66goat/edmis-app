@@ -1,6 +1,6 @@
 package com.ragtopmedia.school.enums;
 
-public enum Role {
+public enum RoleEnum {
     STUDENT_ROLE(1, "Student"),
     TEACHER_ROLE(2, "Teacher"),
     GRADUATE_ASSISTANT(3, "Graduate Assistant");
@@ -8,7 +8,7 @@ public enum Role {
     private int Id;
     private String value;
 
-    Role(int Id, String value){
+    RoleEnum(int Id, String value){
         this.Id = Id;
         this.value = value;
     };
@@ -21,8 +21,8 @@ public enum Role {
         return Id;
     }
 
-    public static Role fromId(int Id){
-        for(Role r : Role.values()){
+    public static RoleEnum fromId(int Id){
+        for(RoleEnum r : RoleEnum.values()){
             if(r.getId() == Id)
                 return r;
         }
@@ -30,8 +30,8 @@ public enum Role {
         throw new IllegalArgumentException("Invalid id: " + Id);
     }
 
-    public Role fromValue(String value){
-        for(Role r : Role.values()){
+    public RoleEnum fromValue(String value){
+        for(RoleEnum r : RoleEnum.values()){
             if(r.getValue().equals(value)){
                 return r;
             }

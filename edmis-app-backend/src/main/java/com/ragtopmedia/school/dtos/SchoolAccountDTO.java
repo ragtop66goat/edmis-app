@@ -3,12 +3,18 @@ package com.ragtopmedia.school.dtos;
 import com.ragtopmedia.school.entities.Address;
 import com.ragtopmedia.school.entities.Contact;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SchoolAccountDTO {
+
+    @Schema(description = "The teacher's contact info")
     private ContactDTO contact;
-    private List<AddressDTO> addressDTOs;
+
+    @Schema(description = "List of addresses associated with the teacher")
+    private List<AddressDTO> addresses;
 
     public static SchoolAccountDTO from(Contact contact, List<Address> addresses){
         SchoolAccountDTO dto = new SchoolAccountDTO();
@@ -19,7 +25,7 @@ public class SchoolAccountDTO {
           addressDTOs.add(AddressDTO.from(address));
         }
 
-        dto.addressDTOs = addressDTOs;
+        dto.addresses = addressDTOs;
 
         return dto;
     }
@@ -29,7 +35,7 @@ public class SchoolAccountDTO {
     }
 
     public void setAddresses(List<AddressDTO> addressDTOs){
-        this.addressDTOs = addressDTOs;
+        this.addresses = addressDTOs;
     }
 
     public ContactDTO getContact(){
@@ -37,6 +43,6 @@ public class SchoolAccountDTO {
     }
 
     public List<AddressDTO> getAddresses(){
-        return addressDTOs;
+        return addresses;
     }
 }

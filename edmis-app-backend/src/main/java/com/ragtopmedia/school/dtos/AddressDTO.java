@@ -2,16 +2,33 @@ package com.ragtopmedia.school.dtos;
 
 import com.ragtopmedia.school.entities.Address;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public class AddressDTO {
 
+     @Schema(description = "Name in care of", example = "Shoto")
     private String inCareOfName;
+
+    @Schema(description = "Street address", example = "123 Mulberry St")
     private String streetAddress;
+
+    @Schema(description = "Apartment number", example = "435")
     private String aptNumber;
+
+    @Schema(description = "City", example = "ketsu")
     private String city;
+
+    @Schema(description = "State", example = "UT")
     private String state;
+
+    @Schema(description = "Postal code", example = "84111")
     private String postalCode;
+
+    @Schema(description = "Country", example = "US")
     private String country;
-    private String addressType;
+
+    @Schema(description = "Type of address", example = "mailing")
+    private String addressType;;
 
     public static AddressDTO from(Address address){
         AddressDTO dto = new AddressDTO();

@@ -5,6 +5,7 @@ import com.ragtopmedia.school.entities.Address;
 import com.ragtopmedia.school.entities.Contact;
 import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.entities.Subject;
+import com.ragtopmedia.school.enums.RoleEnum;
 import com.ragtopmedia.school.repositories.SubjectRepository;
 import com.ragtopmedia.school.repositories.AddressRepository;
 import com.ragtopmedia.school.repositories.ContactRepository;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -34,8 +36,14 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public List<Contact> getTeachers() {
-        return contactRepository.findAll();
+    public List<SchoolAccountDTO> getTeachers() {
+        List<SchoolAccountDTO> teachers = new ArrayList<>();
+        List<SchoolAccount> results = schoolAccountRepository.findAllByRoleId(RoleEnum.TEACHER_ROLE.getId());
+        for(SchoolAccount item : results){
+            teachers.add(SchoolAccountDTO.from(item.getContact(), item.getAddresses()));
+        }
+
+        return teachers;
     }
 
     @Override

@@ -1,7 +1,6 @@
 com\ragtopmedia\school\dtos\ContactDTO.class
 com\ragtopmedia\school\controllers\StudentController.class
 com\ragtopmedia\school\repositories\SubjectRepository.class
-com\ragtopmedia\school\enums\Role.class
 com\ragtopmedia\school\entities\Address.class
 com\ragtopmedia\school\services\StudentServiceImpl.class
 com\ragtopmedia\school\repositories\ContactRepository.class

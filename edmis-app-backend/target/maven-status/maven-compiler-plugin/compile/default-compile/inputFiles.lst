@@ -8,7 +8,7 @@ C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedi
 C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\entities\Subject.java
 C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\repositories\AddressRepository.java
 C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\services\StudentServiceImpl.java
-C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\enums\Role.java
+C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\enums\RoleEnum.java
 C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\dtos\SchoolAccountDTO.java
 C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\services\SubjectServiceImpl.java
 C:\Users\ragto\IdeaProjects\EDMIS\edmis-app-backend\src\main\java\com\ragtopmedia\school\controllers\TeacherController.java
