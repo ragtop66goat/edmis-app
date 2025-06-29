@@ -1,11 +1,11 @@
 import "./App.css";
 import "@uswds/uswds/css/uswds.css";
-import { RegisterStudent } from "./pages/register-student/register-student";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   return (
     <>
-      <RegisterStudent />
+      <AppRouter />
     </>
   );
 }

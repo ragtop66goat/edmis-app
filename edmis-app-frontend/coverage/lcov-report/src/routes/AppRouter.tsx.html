@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/mocks/handlers.ts</title>
+    <title>Code coverage report for src/routes/AppRouter.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/mocks</a> handlers.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/routes</a> AppRouter.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/3</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -80,10 +80,22 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -96,24 +108,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { rest } from "msw";
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/routes/AppRouter.tsx
+<span class="cstat-no" title="statement not covered" >import { BrowserRouter as Router, Routes, Route } from "react-router-dom";</span>
+<span class="cstat-no" title="statement not covered" >import HomePage from "../pages/home-page/home-page";</span>
+<span class="cstat-no" title="statement not covered" >import NotFound from "../pages/not-found/not-found";</span>
+<span class="cstat-no" title="statement not covered" >import { RegisterStudent } from "../pages/register-student/register-student";</span>
+<span class="cstat-no" title="statement not covered" >import StudentDetail from "../pages/student-detail/student-detail";</span>
+<span class="cstat-no" title="statement not covered" >import StudentList from "../pages/student-list/student-list";</span>
+<span class="cstat-no" title="statement not covered" >import SubjectList from "../pages/subject-list/subject-list";</span>
 &nbsp;
-export const handlers = [
-  rest.get("/todos", <span class="fstat-no" title="function not covered" >(r</span>eq, res, ctx) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return res(</span>
-      ctx.status(200),
-      ctx.json([
-        {
-          userId: 1,
-          title: "Wave hello",
-          completed: false,
-          id: 1,
-        },
-      ])
-    );
-  }),
-];
+const AppRouter = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; (</span>
+<span class="cstat-no" title="statement not covered" >  &lt;Router&gt;</span>
+    &lt;Routes&gt;
+      &lt;Route path="/" element={&lt;HomePage /&gt;} /&gt;
+      &lt;Route path="/students" element={&lt;StudentList /&gt;} /&gt;
+      &lt;Route path="/students/:id" element={&lt;StudentDetail /&gt;} /&gt;
+      &lt;Route path="/subjects" element={&lt;SubjectList /&gt;} /&gt;
+      &lt;Route path="/register-student" element={&lt;RegisterStudent /&gt;} /&gt;
+      &lt;Route path="*" element={&lt;NotFound /&gt;} /&gt;
+    &lt;/Routes&gt;
+  &lt;/Router&gt;
+);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >export default AppRouter;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
