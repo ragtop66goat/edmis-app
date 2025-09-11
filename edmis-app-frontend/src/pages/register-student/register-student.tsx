@@ -3,9 +3,15 @@ import AddressSection from "../../components/form-components/address-section/add
 import ContactSection from "../../components/form-components/contact-section/contact-section";
 import StandardButtonConfig from "../../components/form-components/button-configs/standard-button-config";
 import { Address, Contact, RegistrationPayload } from "../../utils/types";
+import { useApi } from "../../hooks/useApi";
 
 export const RegisterStudent = () => {
-  const mockSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const { response, error, loading, makeRequest } = useApi({
+    url: "http://localhost:8080/students",
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+  const mockSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const rawData = Object.fromEntries(formData.entries());
@@ -46,6 +52,7 @@ export const RegisterStudent = () => {
       addresses,
     };
     console.log(payload);
+    await makeRequest(payload);
   };
 
   const handleClear = () => {};
@@ -56,6 +63,9 @@ export const RegisterStudent = () => {
       <div className="margin-y-1">
         <h1>Student Registration</h1>
       </div>
+      {loading && <p>Rpegistering your student.....</p>}
+      {error && <p className="text-red">Error: {error}</p>}
+      {response && <p className="test-green">Student registered sucessfully</p>}
       <Form onSubmit={mockSubmit} large>
         <ContactSection />
         <AddressSection />

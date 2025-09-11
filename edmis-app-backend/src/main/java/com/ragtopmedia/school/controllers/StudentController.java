@@ -3,13 +3,17 @@ package com.ragtopmedia.school.controllers;
 import com.ragtopmedia.school.dtos.SchoolAccountDTO;
 import com.ragtopmedia.school.entities.SchoolAccount;
 import com.ragtopmedia.school.services.StudentServiceImpl;
-
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.parameters.RequestBody; // for @Operation
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +25,25 @@ public class StudentController {
 
     @Autowired
     StudentServiceImpl studentServiceImpl;
+
+    @GetMapping
+    @Operation(
+        summary = "Get all students",
+        description = "Retrieves a list of all students, including there contacts and addresses"
+    )
+    @ApiResponses(value ={
+        @ApiResponse(
+            responseCode = "200",
+            description = "List of students retrieved successfully",
+            content = @Content(
+                mediaType = "application/json",
+                array = @ArraySchema(schema = @Schema(implementation = SchoolAccountDTO.class))
+            )
+        )
+    })
+    List<SchoolAccountDTO> getStudents(){
+        return studentServiceImpl.getStudents();
+    }
 
     @PostMapping
     @Operation(
@@ -76,4 +99,6 @@ public class StudentController {
 
         return studentServiceImpl.createStudent(schoolAccount);
     }
+
+    // create get students endpoint
 }

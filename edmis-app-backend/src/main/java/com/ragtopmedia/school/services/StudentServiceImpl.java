@@ -5,11 +5,16 @@ import com.ragtopmedia.school.dtos.SchoolAccountDTO;
 import com.ragtopmedia.school.entities.Address;
 import com.ragtopmedia.school.entities.Contact;
 import com.ragtopmedia.school.entities.SchoolAccount;
+import com.ragtopmedia.school.enums.RoleEnum;
 import com.ragtopmedia.school.repositories.AddressRepository;
 import com.ragtopmedia.school.repositories.ContactRepository;
 import com.ragtopmedia.school.repositories.SchoolAccountRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,5 +56,17 @@ public class StudentServiceImpl implements StudentService{
         contactRepository.save(contact);
 
         return SchoolAccountDTO.from(contact, schoolAccount.getAddresses());
+    }
+
+    @Override
+    public List<SchoolAccountDTO> getStudents(){
+        List<SchoolAccountDTO> students = new ArrayList<>();
+        List<SchoolAccount> results = schoolAccountRepository.findAllByRoleId(RoleEnum.STUDENT_ROLE.getId());
+
+        for(SchoolAccount item : results){
+            students.add(SchoolAccountDTO.from(item.getContact(), item.getAddresses()));
+        }
+
+        return students;
     }
 }
