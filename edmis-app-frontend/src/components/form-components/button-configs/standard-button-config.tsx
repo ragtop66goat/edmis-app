@@ -1,10 +1,11 @@
 interface IStandardButtonConfigProps {
   handleClear: () => void;
-  handleCancel: () => void;
+  handleCancel?: () => void;
+  showCancel?: boolean;
 }
 
 const StandardButtonConfig = (props: IStandardButtonConfigProps) => {
-  const { handleClear, handleCancel } = props;
+  const { handleClear, handleCancel, showCancel } = props;
   return (
     <div className="button-group">
       <button
@@ -15,14 +16,16 @@ const StandardButtonConfig = (props: IStandardButtonConfigProps) => {
       >
         Clear
       </button>
-      <button
-        className="usa-button usa-button--secondary"
-        type="button"
-        id="student-form-cancel"
-        onClick={handleCancel}
-      >
-        Cancel
-      </button>
+      {showCancel && (
+        <button
+          className="usa-button usa-button--secondary"
+          type="button"
+          id="student-form-cancel"
+          onClick={handleCancel}
+        >
+          Cancel
+        </button>
+      )}
       <button className="usa-button" type="submit" id="student-form-submit">
         Submit
       </button>
