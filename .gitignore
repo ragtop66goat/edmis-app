@@ -1,4 +1,6 @@
+# ============================
 # Logs
+# ============================
 logs
 *.log
 npm-debug.log*
@@ -7,18 +9,46 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# ============================
+# Node / Frontend
+# ============================
+edmis-app-frontend/node_modules/
+edmis-app-frontend/dist/
+edmis-app-frontend/build/
+edmis-app-frontend/coverage/
+node_modules/
+dist/
+dist-ssr/
+build/
 
-# Editor directories and files
+# Vite specific
+.vite/
+
+# React build outputs
+*.tsbuildinfo
+
+# ============================
+# Spring Boot / Backend
+# ============================
+edmis-app-backend/target/
+target/
+*.class
+
+# ============================
+# Editor & System Files
+# ============================
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# ============================
+# Environment Variables
+# ============================
+.env
+.env.local

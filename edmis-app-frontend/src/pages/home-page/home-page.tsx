@@ -15,7 +15,7 @@ const HomePage = () => {
         <div className="grid-container">
           <div className="usa-hero__callout">
             <h1 className="usa-hero__heading">
-              <span className="usa-hero__heading--alt">Weclome to EDMIS</span>
+              <span className="usa-hero__heading--alt">Welcome to EDMIS</span>
               Your central education management system
             </h1>
             <a className="usa-button" href="">
