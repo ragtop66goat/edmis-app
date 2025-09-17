@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -121,7 +121,7 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,7 +144,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,7 +154,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,24 +162,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { createSlice, PayloadAction } from "@reduxjs/toolkit";</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 &nbsp;
 interface IAddress {
   inCareOfName?: string;
@@ -202,7 +202,7 @@ interface IEdmisAccountState {
   addresses: IAddress[];
 }
 &nbsp;
-const initialState: IEdmisAccountState = <span class="cstat-no" title="statement not covered" >{</span>
+const initialState: IEdmisAccountState = {
   firstName: "",
   lastName: "",
   middleName: "",
@@ -212,21 +212,21 @@ const initialState: IEdmisAccountState = <span class="cstat-no" title="statement
   addresses: [],
 };
 &nbsp;
-const edmisAccountSlice = <span class="cstat-no" title="statement not covered" >createSlice({</span>
+const edmisAccountSlice = createSlice({
   name: "contact",
   initialState,
   reducers: {
-    setEdmisAccountField: <span class="fstat-no" title="function not covered" >&lt;K extends keyof IEdmisAccountState&gt;(</span>
+    setEdmisAccountField: &lt;K extends keyof IEdmisAccountState&gt;(
       state: IEdmisAccountState,
       action: PayloadAction&lt;{ field: K; value: IEdmisAccountState[K] }&gt;
     ) =&gt; {
-<span class="cstat-no" title="statement not covered" >      if (</span>
+      if (
         action.payload.field === "addresses" &amp;&amp;
         Array.isArray(action.payload.value)
       ) {
-<span class="cstat-no" title="statement not covered" >        state.addresses = [...state.addresses, ...action.payload.value];</span>
+        state.addresses = [...state.addresses, ...action.payload.value];
       } else {
-<span class="cstat-no" title="statement not covered" >        state[action.payload.field] = action.payload.value;</span>
+        state[action.payload.field] = action.payload.value;
       }
     },
     addAddress: <span class="fstat-no" title="function not covered" >(s</span>tate, action: PayloadAction&lt;IAddress&gt;) =&gt; {
@@ -235,8 +235,8 @@ const edmisAccountSlice = <span class="cstat-no" title="statement not covered" >
   },
 });
 &nbsp;
-export const { <span class="cstat-no" title="statement not covered" >setEdmisAccountField } = edmisAccountSlice.actions;</span>
-<span class="cstat-no" title="statement not covered" >export default edmisAccountSlice.reducer;</span>
+export const { setEdmisAccountField } = edmisAccountSlice.actions;
+export default edmisAccountSlice.reducer;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +244,7 @@ export const { <span class="cstat-no" title="statement not covered" >setEdmisAcc
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-06-28T22:32:13.801Z
+                at 2025-09-17T01:42:00.016Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

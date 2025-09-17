@@ -48,9 +48,6 @@ const edmisAccountSlice = createSlice({
         state[action.payload.field] = action.payload.value;
       }
     },
-    addAddress: (state, action: PayloadAction<IAddress>) => {
-      state.addresses.push(action.payload);
-    },
   },
 });
 

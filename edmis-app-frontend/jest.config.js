@@ -8,10 +8,14 @@ const config = {
   // Use ts-jest to handle TypeScript files
   preset: "ts-jest",
 
-  globals: {
-    "ts-jest": {
-      tsconfig: "tsconfig.app.json", // 👈 point to your app config
-    },
+  transform: {
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        tsconfig: "tsconfig.app.json", // ✅ explicitly point to the correct config
+        isolatedModules: true, // optional optimization
+      },
+    ],
   },
 
   // Recognize file types handled by Vite (JSX, TSX, CSS Modules, etc.)
@@ -21,11 +25,7 @@ const config = {
   moduleNameMapper: {
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
     "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/__mocks__/fileMock.js",
-    "^@/(.*)$": "<rootDir>/src/$1", // Optional: if you're using aliases like @/
-  },
-
-  transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    "^@/(.*)$": "<rootDir>/src/$1", // Optional alias support
   },
 
   testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
@@ -33,7 +33,9 @@ const config = {
   collectCoverageFrom: [
     "src/**/*.{ts,tsx,js,jsx}",
     "!src/**/*.d.ts",
-    "!src/**/index.{ts,tsx,js,jsx}", // optional: ignore barrel files
+    "!src/**/index.{ts,tsx,js,jsx}",
+    "!src/main.tsx",
+    "!src/mocks/*.ts",
   ],
 
   verbose: true,
