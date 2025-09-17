@@ -12,6 +12,8 @@ lerna-debug.log*
 # ============================
 # Node / Frontend
 # ============================
+edmis-app-frontend/node_modules/
+edmis-app-frontend/dist/
 node_modules/
 dist/
 dist-ssr/
@@ -26,6 +28,7 @@ build/
 # ============================
 # Spring Boot / Backend
 # ============================
+edmis-app-backend/target/
 target/
 *.class
 
